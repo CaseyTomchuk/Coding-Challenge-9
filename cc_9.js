@@ -38,3 +38,24 @@ class Manager extends Employee {
 let casey = new Manager ("Casey Tomchuk", 101, "Manager", 5000, 10) 
 casey.getDetails(); // Expected Output: Manager: Casey Tomchuk, ID: 101, Department: Manager, Salary: 5000, Team Size: 10
 console.log(casey.calculateBonus()); // Expected Output: 6000
+
+// Task 3: Creating a Company Class
+
+class Company {
+    constructor(name, employees) {
+        this.name = name;
+        this.employees = []
+    }
+    addEmployee(employee) {
+        this.employees.push(employee) // takes in an employee parameter and assigns/pushes it to employees
+    }
+    listEmployees() {
+        this.employees.forEach(employee => employee.getDetails()) // for each employee under the company class we call employee.getDetails() from earlier in the code
+    }
+}
+
+let company = new Company("yeah")
+company.addEmployee(elise); 
+company.addEmployee(casey); 
+company.listEmployees(); // Expected Output: Employee: Elise Norman, ID: 110, Department: Advertising, Salary: 4000
+// Expected Output: Manager: Casey Tomchuk, ID: 101, Department: Manager, Salary: 5000, Team Size: 10
