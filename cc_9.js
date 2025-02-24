@@ -76,6 +76,15 @@ class Company {
         return this.employees.reduce(this.payrollFunction, 0) * 12; //reduce runs through each item in the employees array (made up of employee objects) and combines their salaries. 0 is set as the initial value for currentTotal
     }
 
+    // Task 5:
+
+    promoteToManager(employee, teamSize) { // Takes in employee and teamSize as parameters
+        employee.teamSize = teamSize; // adds teamSize property to the employee object (essential to a manager object)
+        Object.setPrototypeOf(employee, Manager.prototype); // setting employee prototype to the manager prototype, inheriting the properties of manager
+
+        console.log(`${employee.name} was promoted`);
+    }
+
 };
 
 let company = new Company("Company Name");
@@ -84,5 +93,11 @@ company.addEmployee(casey);
 company.listEmployees(); // Expected Output: Employee: Elise Norman, ID: 110, Department: Advertising, Salary: 4000
 // Expected Output: Manager: Casey Tomchuk, ID: 101, Department: Manager, Salary: 5000, Team Size: 10
 
-// Task 4: Implementing a Payroll System *
-console.log(company.calculateTotalPayroll()); // Expected Output: 108,0000 annual
+// Task 4: Implementing a Payroll System 
+console.log(company.calculateTotalPayroll()); // Expected Output: 108,0000 (annual)
+
+// Task 5: Implementing Promotions:
+
+company.promoteToManager(elise, 3); // running promoteToManager with the parameters being an employee object and the team size we want to set
+company.listEmployees(); // Expected output Manager: Elise Norman, ID: 110, Department: Advertising, Salary: 4000, Team Size: 3
+                        //Manager: Casey Tomchuk, ID: 101, Department: Manager, Salary: 5000, Team Size: 10
